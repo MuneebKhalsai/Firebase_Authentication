@@ -70,7 +70,7 @@ useEffect(() => {
 
   return (
     <>
-      <div className="flex justify-between items-center p-4 bg-blue-500 text-white shadow-md">
+      <div className="flex justify-between items-center p-4 bg-blue-500 hover:bg-blue-700 text-white shadow-md">
         <h1 className="text-3xl font-bold">Home</h1>
         <div className="space-x-4">
           <button
@@ -93,7 +93,7 @@ useEffect(() => {
             key={item.id}
             className="bg-white rounded-lg shadow-md p-5 border hover:shadow-xl transition-shadow"
           >
-            <img className="w-full my-2" src={item.image} />
+            <img className="w-full my-1 hover:scale-110 transition transform duration-300 " src={item.image} />
             <h2 className="text-2xl font-semibold text-gray-800 mb-3">
               {item.title || "Untitled Post"}
             </h2>

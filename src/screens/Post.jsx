@@ -9,6 +9,7 @@ const Post = () => {
   const text = useRef();
   const title = useRef();
   const image = useRef();
+  const imageUrl = useRef();
 
   const post = async (event) =>{
     event.preventDefault();
@@ -17,8 +18,9 @@ const Post = () => {
       const docRef = await addDoc(collection(db, "posts"), {
         title: title.current.value,
         content: text.current.value,
-
-        uid: auth.currentUser.uid
+        image: imageUrl.current.value,
+          uid: auth.currentUser.uid,
+                PostAt: serverTimestamp(),
     });
     console.log("Document written with ID: ", docRef.id);
     }
@@ -33,7 +35,8 @@ const Post = () => {
     
       text.current.value= '' 
     title.current.value=''
-      PostAt: serverTimestamp()
+    image.current.value=''
+
   }
 
 
@@ -59,11 +62,14 @@ const Post = () => {
           type="title" ref={title}
           placeholder="Enter Title"className="w-full px-2  h-15 border rounded " required />
 
-<input 
-          type="text" ref={text}
-          placeholder="Enter Description" className="w-full px-2  h-15 border rounded "required/>
+<input type="text" ref={text}  placeholder="Enter Description" className="w-full px-2  h-15 border rounded "required/>
 
-          <input type="file" ref={image} className="w-full px-2  h-15 border rounded p-4" required/>
+        <input 
+          type="text" ref={imageUrl}
+          placeholder="Enter Image Url"className="w-full px-2  h-15 border rounded " required />
+
+
+          <input type="file" ref={image} className="w-full px-2  h-15 border rounded p-4" />
  <button 
           type="submit"
           className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600 transition"
